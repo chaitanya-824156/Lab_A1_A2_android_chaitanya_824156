@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.16018518518518518" />
         <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/layout/activity_main.xml" value="0.12273550724637682" />
+        <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/layout/activity_maps.xml" value="0.1" />
+        <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/layout/activity_product_add_update.xml" value="0.21" />
         <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/layout/activity_product_detail.xml" value="0.11639492753623189" />
+        <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/layout/activity_provider_add_update.xml" value="0.11005434782608696" />
         <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/layout/activity_provider_products.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/layout/fragment_product_list.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/user/Downloads/Lab_A1_A2_android_chaitanya_824156-main/app/src/main/res/layout/fragment_provider_list.xml" value="0.22" />

@@ -3,6 +3,7 @@ package com.chaitanya.lab_a1_a2_android_chaitanya_824156.dao;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.chaitanya.lab_a1_a2_android_chaitanya_824156.model.Product;
@@ -30,7 +31,7 @@ public interface ProductDao {
     @Query("SELECT * FROM products WHERE product_name LIKE :name AND " + "product_description LIKE :description LIMIT 100")
     Product findByNameAndDescription(String name, String description);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAllProducts(Product... products);
 
     @Delete

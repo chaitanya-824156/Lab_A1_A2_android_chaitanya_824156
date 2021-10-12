@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         List<Provider> providers = providerDao.getAllProviders();
         if (providers.size() == 0) {
             Provider provider = new Provider("Chaitanya's Store", "chai@gmail.com", "9742003744", 43.13, -77.54);
-            providerDao.insertAllProviders(provider);
+            providerDao.insertProvider(provider);
             int providerId = providerDao.getDummyProviderId();
             String[] productNames = new String[]{"Toothpaste", "Soap", "IceCream", "Chocos", "Tata Power"};
             Product[] productsList = new Product[productNames.length];
@@ -67,4 +67,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(productIntent);
     }
 
+    public void startAddProductScreen(int productId) {
+        Intent productIntent = new Intent(MainActivity.this, ProductAddUpdateActivity.class);
+        productIntent.putExtra("productId",productId);
+        startActivity(productIntent);
+    }
+    public void startAddProviderScreen(int providerId) {
+        Intent providerIntent = new Intent(MainActivity.this, ProviderAddUpdateActivity.class);
+        providerIntent.putExtra("providerId",providerId);
+        startActivity(providerIntent);
+    }
+
+    public void showProviderOnMap() {
+        Intent providerMapIntent = new Intent(MainActivity.this, MapsActivity.class);
+        startActivity(providerMapIntent);
+    }
 }

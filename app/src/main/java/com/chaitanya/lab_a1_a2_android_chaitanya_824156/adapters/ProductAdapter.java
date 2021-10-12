@@ -1,5 +1,6 @@
 package com.chaitanya.lab_a1_a2_android_chaitanya_824156.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,10 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     private List<Product> products;
     private ProductClickListener clickListener;
+    private Context context;
 
-    public ProductAdapter() {
+    public ProductAdapter(Context context) {
+        this.context = context;
     }
 
     public void setProducts(List<Product> products) {
@@ -27,6 +30,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public void setClickListener(ProductClickListener clickListener) {
         this.clickListener = clickListener;
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     @NonNull
@@ -52,6 +59,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return products == null ? 0 : products.size();
     }
 
+    public void deleteAction(int position) {
+        if (clickListener != null) {
+            clickListener.onDeleteAction(products.get(position));
+            products.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
+    public void editAction(int position) {
+        if (clickListener != null) {
+            clickListener.onEditProductAction(products.get(position));
+        }
+    }
+
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         AppCompatTextView txtName, txtDescription, txtSp;
 
@@ -74,5 +95,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public interface ProductClickListener {
         void onProductItemClick(Product product);
+
+        void onDeleteAction(Product product);
+        void onEditProductAction(Product product);
     }
 }

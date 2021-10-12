@@ -1,5 +1,6 @@
 package com.chaitanya.lab_a1_a2_android_chaitanya_824156.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,38 @@ import java.util.List;
 public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.ProviderViewHolder> {
     private List<Provider> providers;
     public ProviderClickListener onProviderClick;
+    private Context context;
 
-    public ProviderAdapter(List<Provider> providers) {
+
+    public void setProviders(List<Provider> providers) {
         this.providers = providers;
+        notifyDataSetChanged();
+    }
+
+    public ProviderAdapter(Context context) {
+
+        this.context = context;
     }
 
     public void setOnProviderClick(ProviderClickListener onProviderClick) {
         this.onProviderClick = onProviderClick;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+    public void deleteAction(int position) {
+        if (onProviderClick != null) {
+            onProviderClick.onDeleteAction(providers.get(position));
+            providers.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
+    public void editAction(int position) {
+        if (onProviderClick != null) {
+            onProviderClick.onEditAction(providers.get(position));
+        }
     }
 
     @NonNull
@@ -41,6 +67,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
         holder.txtName.setText(name);
         holder.txtPhone.setText(phone);
         holder.txtMail.setText(email);
+        holder.txtCount.setText(""+provider.getProducts().size());
     }
 
     @Override
@@ -49,13 +76,14 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
     }
 
     public class ProviderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        AppCompatTextView txtName, txtPhone, txtMail;
+        AppCompatTextView txtName, txtPhone, txtMail,txtCount;
 
         public ProviderViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.provider_name);
             txtPhone = itemView.findViewById(R.id.phone_number);
             txtMail = itemView.findViewById(R.id.mail_id);
+            txtCount = itemView.findViewById(R.id.productCount);
             itemView.setOnClickListener(this);
         }
 
@@ -70,5 +98,7 @@ public class ProviderAdapter extends RecyclerView.Adapter<ProviderAdapter.Provid
 
     public interface ProviderClickListener {
         void onProviderItemClick(Provider provider);
+        void onDeleteAction(Provider provider);
+        void onEditAction(Provider provider);
     }
 }

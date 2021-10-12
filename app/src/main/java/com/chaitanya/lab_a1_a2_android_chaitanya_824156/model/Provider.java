@@ -2,9 +2,12 @@ package com.chaitanya.lab_a1_a2_android_chaitanya_824156.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 @Entity(tableName = "providers")
 public class Provider implements Serializable {
@@ -25,6 +28,9 @@ public class Provider implements Serializable {
 
     @ColumnInfo(name = "provider_lng")
     public double provider_lng;
+
+    @Ignore
+    private List<Product> products;
 
     public Provider(){}
 
@@ -82,5 +88,31 @@ public class Provider implements Serializable {
 
     public void setProvider_lng(double provider_lng) {
         this.provider_lng = provider_lng;
+    }
+
+    @Override
+    public String toString() {
+        return  provider_name;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Provider provider = (Provider) o;
+        return provider_id == provider.provider_id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(provider_id);
     }
 }

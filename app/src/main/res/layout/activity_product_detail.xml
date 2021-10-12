@@ -36,10 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/productPrice"
-        android:background="@color/teal_700"
+        android:background="?android:colorForegroundInverse"
         android:padding="4dp"
         android:text="Provider Details"
-        android:textColor="@color/white" />
+        android:textColor="?android:colorForeground" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/provider_name"

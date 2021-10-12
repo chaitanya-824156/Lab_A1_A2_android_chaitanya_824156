@@ -8,6 +8,7 @@
     app:cardElevation="2dp">
 
     <RelativeLayout
+        android:layout_margin="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -16,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
+            android:layout_marginBottom="4dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
         <androidx.appcompat.widget.AppCompatTextView
@@ -36,8 +38,20 @@
             android:drawableTint="@color/purple_500"
             android:drawableLeft="@android:drawable/ic_dialog_email"
             android:textColor="@color/purple_500"
+            android:layout_toStartOf="@+id/productCount"
             android:textStyle="bold"
             android:layout_below="@+id/phone_number"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/productCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:layout_margin="4dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_below="@+id/phone_number"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
